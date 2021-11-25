@@ -1,0 +1,38 @@
+<!-- TO-DO -->
+{% include 'top.html' %}
+<div class="content">
+    <div class="container details">
+        <h2 class="title"> All Deleted Podcast Episodes</h2>
+        <hr/>
+        <div>
+        <!-- All Deleted Podcast Episodes -->
+            <table class="styled">
+                <thead>
+                    <tr>
+                        <td>Podcast ID</td>
+                        <td>Media ID</td>
+                        <td>Podcast Name</td>
+                        <td>Podcast URI</td>
+                        <td>Podcast Last Updated</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for instance in allpodcasts %}
+                        <!-- Each row is a link to each individual podcast page -->
+                        <tr class="clickable-tr" data-href="{{ url_for('single_podcast', podcast_id=instance.podcast_id)}}">
+                            <tr class="clickable-tr" data-href="{{ url_for('single_media', media_id=instance.media_id)}}">
+                            <td style="text-align: center">{{ instance.podcast_id }}</td>
+                            <td style="text-align: center">{{ instance.media_id }}</td>
+                            <td>{{instance.podcast_title}}</td>
+                            <td>{{instance.podcast_uri}}</td>
+                            <td>{{instance.podcast_last_updated}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</div>
+{% include 'bottom.html'%}
